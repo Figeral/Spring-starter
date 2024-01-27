@@ -49,7 +49,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.32</version>
+			<version>8.0.30</version>
 			<!-- <scope>compile</scope> -->
 			<!-- we want to the driver to be accessible globally in the project after compiling and not only 
 			at run time and the scope is set as diffult to Compile when nothing is specified -->
