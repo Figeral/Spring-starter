@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CardatabaseApplication {
 
-	@GetMapping()
+	@GetMapping(path = "/Controller")
 	public String hello(@RequestParam(value = "name", defaultValue = "world") String name) {
 		return String.format("hello %s", name);
 	}
