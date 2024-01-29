@@ -21,15 +21,16 @@ public class Car {
 
   private String Brand, Model, Color, RegisterNumber;
   private int Year, Price;
+  Owner owner;
 
-  @Column(name = "Explanation", nullable = false, length = 512)
+  @Column(name = "Explanation", nullable = true, length = 512)
   private String Description;
 
-  Car() {
+  public Car() {
   }
 
-  Car(String Brand, String Model, String Color, String RegisterNumber, int Year, int Price,
-      String Description) {
+  public Car(String Brand, String Model, String Color, String RegisterNumber, int Year, int Price,
+      String Description,Owner owner) {
     this.Brand = Brand;
     this.Model = Model;
     this.Color = Color;
@@ -37,6 +38,7 @@ public class Car {
     this.Year = Year;
     this.Price = Price;
     this.Description = Description;
+    this.owner=owner;
   }
 
   public long getId() {
@@ -105,5 +107,12 @@ public class Car {
 
   public void setDescription(String description) {
     Description = description;
+  }
+
+  public Owner getOwner(){
+    return this.owner;
+  }
+  public void setOwner( Owner owner){
+    this.owner=owner;
   }
 }
