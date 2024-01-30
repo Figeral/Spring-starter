@@ -5,7 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+
 
 /*
  * The Entity annotation is used to specified that the class is a table .
@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
  * The column properties can be changed with the annotation @columns
  */
 @Entity
-@Table
+
 public class Car {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,7 +30,7 @@ public class Car {
   }
 
   public Car(String Brand, String Model, String Color, String RegisterNumber, int Year, int Price,
-      String Description,Owner owner) {
+      String Description) {
     this.Brand = Brand;
     this.Model = Model;
     this.Color = Color;
@@ -38,7 +38,7 @@ public class Car {
     this.Year = Year;
     this.Price = Price;
     this.Description = Description;
-    this.owner=owner;
+    // this.owner=owner;
   }
 
   public long getId() {
@@ -109,10 +109,10 @@ public class Car {
     Description = description;
   }
 
-  public Owner getOwner(){
-    return this.owner;
-  }
-  public void setOwner( Owner owner){
-    this.owner=owner;
-  }
+  // public Owner getOwner(){
+  //   return this.owner;
+  // }
+  // public void setOwner( Owner owner){
+  //   this.owner=owner;
+  // }
 }
