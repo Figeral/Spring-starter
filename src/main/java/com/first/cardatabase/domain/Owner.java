@@ -2,28 +2,44 @@ package com.first.cardatabase.domain;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 
 @Entity
+@Table
 public class Owner {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
-    String FirstName, LastName;
-    List<Car> car;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+     private Long owner_id;
+
+    private  String FirstName, LastName;
+
+    /*
+     * The mappedBy attribute tells the Car class that it has field called Owner whis
+     * is also the Foreign key.
+     */
+    @OneToMany(cascade = CascadeType.ALL , mappedBy = "owner" )
+    private List<Car> car;
 
     public Owner(){}
 
-    public Owner(String FirstName,String LastName,List<Car> car){
+    public Owner(String FirstName,String LastName){
         this.FirstName=FirstName;
         this.LastName=LastName;
-        this.car=car;
     }
 
+    public Long getOwner_id() {
+        return owner_id;
+    }
+    public void setOwner_id(Long owner_id) {
+        this.owner_id = owner_id;
+    }
     public String getFirstName(){
         return this.FirstName;
     }

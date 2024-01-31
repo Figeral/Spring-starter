@@ -2,9 +2,13 @@ package com.first.cardatabase.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 
 /*
@@ -13,15 +17,18 @@ import jakarta.persistence.Id;
  * The column properties can be changed with the annotation @columns
  */
 @Entity
-
+@Table
 public class Car {
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  private long id;
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private long car_id;
 
   private String Brand, Model, Color, RegisterNumber;
   private int Year, Price;
-  Owner owner;
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "owner")
+   private Owner owner;
 
   @Column(name = "Explanation", nullable = true, length = 512)
   private String Description;
@@ -30,7 +37,7 @@ public class Car {
   }
 
   public Car(String Brand, String Model, String Color, String RegisterNumber, int Year, int Price,
-      String Description) {
+      String Description, Owner owner) {
     this.Brand = Brand;
     this.Model = Model;
     this.Color = Color;
@@ -38,15 +45,14 @@ public class Car {
     this.Year = Year;
     this.Price = Price;
     this.Description = Description;
-    // this.owner=owner;
+    this.owner=owner;
   }
 
-  public long getId() {
-    return id;
+  public long getCar_id() {
+      return car_id;
   }
-
-  public void setId(long id) {
-    this.id = id;
+  public void setCar_id(long car_id) {
+      this.car_id = car_id;
   }
 
   public String getBrand() {
@@ -109,10 +115,10 @@ public class Car {
     Description = description;
   }
 
-  // public Owner getOwner(){
-  //   return this.owner;
-  // }
-  // public void setOwner( Owner owner){
-  //   this.owner=owner;
-  // }
+  public Owner getOwner(){
+    return this.owner;
+  }
+  public void setOwner( Owner owner){
+    this.owner=owner;
+  }
 }
