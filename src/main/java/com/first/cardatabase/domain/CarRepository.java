@@ -1,11 +1,13 @@
 package com.first.cardatabase.domain;
 
+import java.util.List;
+
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-/*
- * Creating a CRUD repository interface to manage the Entity Car .
- *  The CrudRepository angle brackets indicates that it's of type Car and the id is of type Long.
- */
-public interface CarRepository extends CrudRepository<Car, Long> {
-
+@Repository
+@ComponentScan
+public interface CarRepository extends CrudRepository<Car,Long> {
+   
 }

@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,11 +25,13 @@ public class CardatabaseApplication implements CommandLineRunner {
 		SpringApplication.run(CardatabaseApplication.class, args);
 
 	}
+	@GetMapping("")
+	public String gretting(@RequestParam(value = "pseudo" , defaultValue = "Bro") String pseudo){
+		return String.format("Yo %s",pseudo);
 
-	@RequestMapping(path = "/greeting")
-	public String hello(@RequestParam(value = "name" , defaultValue = "world") String name) {
-		return String.format("hello %s ", name);
 	}
+   
+	
 
 	/*
 	 * The @Autowired enables us to load dependecies to ours  class . 
@@ -49,10 +50,7 @@ public class CardatabaseApplication implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-		// repository.save(new Car("Toyota", "Yaris", "Red", "S-2000", 2002, 1000000, ""));
-		// repository.save(new Car("Mercedes", "Benz", "white", "M-100", 1995, 2000000, ""));
-		// user.save(new Owner("Fitzgerald","Mouliom"));
-		// user.save(new Owner("Emmanuel","Nsangou"));
+		
         // user.saveAll(Arrays.asList(owner1,owner2));
 		// repository.save(new Car("Ford", "Mustang", "Black", "X-cobra", 2010, 10000000, "Style mexicain",owner1));
 		// repository.save(new Car("Mercedes", "4matic", "white", "xxx", 2015, 20000000, "Elle je l'adore",owner2));

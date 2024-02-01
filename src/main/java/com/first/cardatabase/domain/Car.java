@@ -1,5 +1,8 @@
 package com.first.cardatabase.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -18,6 +21,7 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table
+
 public class Car {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +29,8 @@ public class Car {
 
   private String Brand, Model, Color, RegisterNumber;
   private int Year, Price;
-
+  
+ 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "owner")
    private Owner owner;
